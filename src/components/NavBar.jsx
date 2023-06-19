@@ -1,4 +1,4 @@
-import { BiMenu } from "react-icons/bi";
+import { BiMenu, BiUser } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import sound_lab_black from "../assets/sound-lab-black.svg";
@@ -13,7 +13,7 @@ export const NavBar = () => {
         </p>
       </div>
       {/* Navbar */}
-      <div className="flex items-center justify-between py-2 lg:p-4 lg:ml-40 lg:mr-40">
+      <div className="flex items-center justify-between py-2 lg:p-4">
         <div className="flex items-center justify-center ml-5 ">
           <BiMenu className="text-3xl mr-1 cursor-pointer lg:hidden" />
           <img
@@ -25,13 +25,21 @@ export const NavBar = () => {
         <div className="hidden lg:flex ">
           {NavItems.map((item, index) => {
             return (
-              <p className="mr-3 text-xl font-semibold hover:underline hover:text-red-400">
+              <p className="mr-4 text-lg font-light hover:underline hover:text-red-400 hover:font-semibold">
                 {item.text}
               </p>
             );
           })}
         </div>
+        <div className="hidden lg:flex">
+          <input
+            type="text"
+            placeholder='Search "Headphones..."'
+            className="bg-gray-200 py-2 px-6 rounded-full w-80"
+          />
+        </div>
         <div className="flex items-center justify-center mr-5">
+          <BiUser className="text-3xl mr-3 cursor-pointer" />
           <AiOutlineSearch className="text-3xl mr-3 cursor-pointer" />
           <BsBag className="text-3xl cursor-pointer" />
         </div>
@@ -49,8 +57,5 @@ const NavItems = [
   },
   {
     text: "Speakers",
-  },
-  {
-    text: "Grooming",
   },
 ];
