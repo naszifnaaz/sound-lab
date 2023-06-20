@@ -3,10 +3,10 @@ import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import sound_lab_black from "../assets/sound-lab-black.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   const [mobileNav, setMobileNav] = useState(false);
-  console.log(mobileNav);
   return (
     <div>
       {/* Pre NavBar */}
@@ -16,7 +16,7 @@ export const NavBar = () => {
         </p>
       </div>
       {/* Navbar */}
-      <div className="flex items-center justify-between py-2 lg:p-4">
+      <div className="flex items-center justify-between py-2 lg:p-4 bg-slate-50">
         <div className="flex items-center justify-center ml-5 ">
           {mobileNav ? (
             <AiOutlineClose
@@ -30,21 +30,24 @@ export const NavBar = () => {
             />
           )}
 
-          <img
-            src={sound_lab_black}
-            className="w-40 lg:w-52 cursor-pointer"
-            alt="sound-lab-logo-black"
-          />
+          <Link to={"/"}>
+            <img
+              src={sound_lab_black}
+              className="w-40 lg:w-52 cursor-pointer"
+              alt="sound-lab-logo-black"
+            />
+          </Link>
         </div>
         <div className="hidden lg:flex ">
           {NavItems.map((item, index) => {
             return (
-              <p
+              <Link
+                to={"/hello"}
                 key={index}
-                className="mr-4 text-lg font-light    link link-underline link-underline-black text-black"
+                className="mr-4 text-lg font-light link link-underline link-underline-black text-black"
               >
                 {item.text}
-              </p>
+              </Link>
             );
           })}
         </div>
@@ -56,7 +59,10 @@ export const NavBar = () => {
           />
         </div>
         <div className="flex items-center justify-center mr-5">
-          <BiUser className="text-3xl mr-3 cursor-pointer" />
+          <Link to={"/login"}>
+            <BiUser className="text-3xl mr-3 cursor-pointer" />
+          </Link>
+
           <AiOutlineSearch className="text-3xl mr-3 cursor-pointer" />
           <BsBag className="text-3xl cursor-pointer" />
         </div>
