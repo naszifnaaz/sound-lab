@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <NavBar />
       <HeroCarousel />
-      {/* <BestSellers /> */}
+      <BestSellers />
       <Footer />
     </div>
   );

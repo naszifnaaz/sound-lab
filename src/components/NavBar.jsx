@@ -39,7 +39,10 @@ export const NavBar = () => {
         <div className="hidden lg:flex ">
           {NavItems.map((item, index) => {
             return (
-              <p className="mr-4 text-lg font-light hover:underline hover:text-red-400 hover:font-semibold">
+              <p
+                key={index}
+                className="mr-4 text-lg font-light    link link-underline link-underline-black text-black"
+              >
                 {item.text}
               </p>
             );
@@ -64,35 +67,59 @@ export const NavBar = () => {
         <h1 className="font-semibold m-3 text-lg">Categories</h1>
         <div className="grid grid-cols-3 m-4">
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/dropdown-TWS_100x.png?v=1684827062" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/dropdown-TWS_100x.png?v=1684827062"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Wireless Earbuds</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Neckbands_06214c1a-5e30-48ea-ac14-4a6bff679f48_100x.png?v=1684828287" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Neckbands_06214c1a-5e30-48ea-ac14-4a6bff679f48_100x.png?v=1684828287"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Neckbands</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Rockerz_100x.png?v=1684827714" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Rockerz_100x.png?v=1684827714"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Wireless Headphones</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/box-5_100x.png?v=1684827751" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/box-5_100x.png?v=1684827751"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Wireless Speakers</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/bassheads-Wired-Headphones_0877b292-85ab-42ed-a055-26e1c246be73_100x.png?v=1684827787" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/bassheads-Wired-Headphones_0877b292-85ab-42ed-a055-26e1c246be73_100x.png?v=1684827787"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Wired Headphones</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/latest_background_b4f773ca-05d9-41cc-a7cf-3104993ae895_100x.png?v=1684827816" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/latest_background_b4f773ca-05d9-41cc-a7cf-3104993ae895_100x.png?v=1684827816"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Wired Earphones</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Collections_5baef8f1-a67a-40a5-a537-4258c6caae6a_100x.png?v=1684827849" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Collections_5baef8f1-a67a-40a5-a537-4258c6caae6a_100x.png?v=1684827849"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Soundbars</p>
           </div>
           <div className="p-5 flex flex-col items-center justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Immortal_category_Image_100x.png?v=1684827903" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0057/8938/4802/collections/Immortal_category_Image_100x.png?v=1684827903"
+              alt="nav-item"
+            />
             <p className="text-xs text-center">Gaming Headphones</p>
           </div>
         </div>
