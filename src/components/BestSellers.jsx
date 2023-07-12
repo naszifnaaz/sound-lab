@@ -6,10 +6,10 @@ import { BestSellerCard } from "./BestSellerCard";
 
 export const BestSellers = () => {
   return (
-    <div>
+    <div className="w-9/12 m-auto">
       <h2 className="text-2xl mt-5 ml-5 lg:my-5">
         Explore{" "}
-        <span className="text-2xl  font-semibold link link-underline link-underline-black text-black ">
+        <span className="text-2xl font-semibold link link-underline link-underline-black text-black ">
           Bestsellers
         </span>
       </h2>

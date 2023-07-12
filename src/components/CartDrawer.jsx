@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import EmptyCart from "../assets/empty-cart.png";
 
 export default function CartDrawer({ cartMenu, setCartMenu }) {
   return (
@@ -57,8 +58,9 @@ export default function CartDrawer({ cartMenu, setCartMenu }) {
                         Your Cart
                       </Dialog.Title>
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                    <div className="relative mt-6 flex-1 px-4 sm:px-6 flex justify-center items-center">
                       {/* Your content */}
+                      <img src={EmptyCart} alt="Cart Empty" />
                     </div>
                   </div>
                 </Dialog.Panel>
