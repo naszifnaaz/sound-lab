@@ -1,19 +1,62 @@
+import { useState } from "react";
 import logo from "../assets/logo.svg";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
+  // Register Form Handling
+  const initState = {
+    fullname: "",
+    email: "",
+    password: "",
+    role: "user",
+  };
+
+  const [formState, setFormState] = useState(initState);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        "https://teal-scallop-cape.cyclic.app/register",
+        formState
+      );
+      localStorage.setItem("token", res.data.results);
+      toast("User Registered!");
+    } catch (err) {
+      console.log("Something went wrong!");
+      toast("Something went wrong!");
+    }
+
+    setFormState(initState);
+  }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img className="mx-auto h-15 w-auto" src={logo} alt="Your Company" />
+          <img className="mx-auto h-15 w-auto" src={logo} alt="Sound Lab" />
           <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create Your Account
           </h2>
         </div>
 
         <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form
+            className="space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -23,10 +66,11 @@ export default function LoginForm() {
               </label>
               <div className="mt-2">
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  onChange={handleChange}
+                  id="fullname"
+                  name="fullname"
+                  type="text"
+                  autoComplete="current"
                   required
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -41,6 +85,7 @@ export default function LoginForm() {
               </label>
               <div className="mt-2">
                 <input
+                  onChange={handleChange}
                   id="email"
                   name="email"
                   type="email"
@@ -62,6 +107,7 @@ export default function LoginForm() {
               </div>
               <div className="mt-2">
                 <input
+                  onChange={handleChange}
                   id="password"
                   name="password"
                   type="password"
@@ -92,6 +138,7 @@ export default function LoginForm() {
           </p>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
