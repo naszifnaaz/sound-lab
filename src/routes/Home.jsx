@@ -1,10 +1,10 @@
-import { BestSellers } from "../components/User/Home/BestSellers";
-import { DailyDeals } from "../components/User/Home/DailyDeals";
-import { Footer } from "../components/User/Footer";
-import { HeroCarousel } from "../components/User/Home/HeroCarousel";
-import { NavBar } from "../components/User/NavBar";
-import { ShopByLifeStyle } from "../components/User/Home/ShopByLifestyle";
-import { ShopCategories } from "../components/User/Home/ShopCategories";
+import { BestSellers } from "../components/home/BestSellers";
+import { DailyDeals } from "../components/home/DailyDeals";
+import { Footer } from "../components/Footer";
+import { HeroCarousel } from "../components/home/HeroCarousel";
+import { NavBar } from "../components/NavBar";
+import { ShopByLifeStyle } from "../components/home/ShopByLifestyle";
+import { ShopCategories } from "../components/home/ShopCategories";
 
 export const Home = () => {
   return (

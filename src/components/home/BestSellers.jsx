@@ -1,7 +1,7 @@
-import headphones from "../../../assets/headphones.gif";
-import earphones from "../../../assets/earphones.gif";
-import neckbands from "../../../assets/neckbands.gif";
-import speakers from "../../../assets/speakers.gif";
+import headphones from "../../assets/headphones.gif";
+import earphones from "../../assets/earphones.gif";
+import neckbands from "../../assets/neckbands.gif";
+import speakers from "../../assets/speakers.gif";
 import { BestSellerCard } from "./BestSellerCard";
 
 export const BestSellers = () => {

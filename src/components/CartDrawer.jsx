@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import EmptyCart from "../../assets/empty-cart.png";
+import EmptyCart from "../assets/empty-cart.png";
 
 export default function CartDrawer({ cartMenu, setCartMenu }) {
   return (

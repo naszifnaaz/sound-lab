@@ -1,6 +1,6 @@
-import { Footer } from "../components/User/Footer";
-import LoginForm from "../components/User/Auth/LoginForm";
-import { NavBar } from "../components/User/NavBar";
+import { Footer } from "../components/Footer";
+import LoginForm from "../components/auth/LoginForm";
+import { NavBar } from "../components/NavBar";
 
 export const Login = () => {
   return (

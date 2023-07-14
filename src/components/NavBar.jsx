@@ -1,7 +1,7 @@
 import { BiMenu, BiUser } from "react-icons/bi";
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
-import sound_lab_black from "../../assets/sound-lab-black.svg";
+import sound_lab_black from "../assets/sound-lab-black.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDrawer from "./CartDrawer";
