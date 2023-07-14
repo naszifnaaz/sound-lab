@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Spinner } from "../Spinner";
 
 export default function LoginForm() {
   // Register Form Handling
@@ -15,21 +16,23 @@ export default function LoginForm() {
   };
 
   const [formState, setFormState] = useState(initState);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     try {
       const res = await axios.post(
         "https://teal-scallop-cape.cyclic.app/register",
         formState
       );
+      setLoading(false);
       localStorage.setItem("token", res.data.results);
       toast("User Registered!");
     } catch (err) {
-      console.log("Something went wrong!");
+      setLoading(false);
       toast("Something went wrong!");
     }
-
     setFormState(initState);
   }
 
@@ -69,6 +72,7 @@ export default function LoginForm() {
                   name="fullname"
                   type="text"
                   autoComplete="current"
+                  value={formState.fullname}
                   required
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -88,6 +92,7 @@ export default function LoginForm() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  value={formState.email}
                   required
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -110,6 +115,7 @@ export default function LoginForm() {
                   name="password"
                   type="password"
                   autoComplete="current-password"
+                  value={formState.password}
                   required
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -121,7 +127,7 @@ export default function LoginForm() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Create Account
+                {loading ? <Spinner /> : "Create Account"}
               </button>
             </div>
           </form>

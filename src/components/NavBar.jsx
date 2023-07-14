@@ -5,10 +5,12 @@ import sound_lab_black from "../assets/sound-lab-black.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDrawer from "./CartDrawer";
+import { AvatarMenu } from "./AvatarMenu";
 
 export const NavBar = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [cartMenu, setCartMenu] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
   return (
     <>
       <div>
@@ -62,11 +64,15 @@ export const NavBar = () => {
             />
           </div>
           <div className="flex items-center justify-center mr-5">
-            <Link to={"/login"}>
-              <BiUser className="text-3xl mr-3 cursor-pointer" />
-            </Link>
+            {isLoggedIn ? (
+              <AvatarMenu />
+            ) : (
+              <Link to={"/login"}>
+                <BiUser className="text-3xl mr-3 cursor-pointer" />
+              </Link>
+            )}
 
-            <AiOutlineSearch className="text-3xl mr-3 cursor-pointer" />
+            {/* <AiOutlineSearch className="text-3xl mr-3 cursor-pointer" /> */}
             <BsBag
               className="text-3xl cursor-pointer"
               onClick={() => setCartMenu(true)}
