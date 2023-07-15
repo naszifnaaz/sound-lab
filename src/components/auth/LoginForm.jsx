@@ -2,10 +2,12 @@ import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 import { Spinner } from "../Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/actions/auth";
+import { setLoading, removeLoading } from "../../redux/actions/loader";
 
 export default function LoginForm() {
   const initState = {
@@ -13,7 +15,8 @@ export default function LoginForm() {
     password: "",
   };
   const [formState, setFormState] = useState(initState);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const isLoading = useSelector((store) => store.isLoading);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,19 +25,9 @@ export default function LoginForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await axios.post(
-        "https://teal-scallop-cape.cyclic.app/login",
-        formState
-      );
-      setLoading(false);
-      localStorage.setItem("token", res.data.token);
-      toast("Login Successfull!");
-    } catch (err) {
-      setLoading(false);
-      toast("Wrong Credentials!");
-    }
+    dispatch(setLoading());
+    await dispatch(login(formState));
+    dispatch(removeLoading());
     setFormState(initState);
   }
 
@@ -112,7 +105,7 @@ export default function LoginForm() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                {loading ? <Spinner /> : "Sign In"}
+                {isLoading ? <Spinner /> : "Sign In"}
               </button>
             </div>
           </form>

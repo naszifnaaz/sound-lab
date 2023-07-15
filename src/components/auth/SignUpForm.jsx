@@ -1,10 +1,12 @@
 import { useState } from "react";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "../Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../redux/actions/auth";
+import { setLoading, removeLoading } from "../../redux/actions/loader";
 
 export default function LoginForm() {
   // Register Form Handling
@@ -16,23 +18,14 @@ export default function LoginForm() {
   };
 
   const [formState, setFormState] = useState(initState);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const isLoading = useSelector((store) => store.isLoading);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
-    try {
-      const res = await axios.post(
-        "https://teal-scallop-cape.cyclic.app/register",
-        formState
-      );
-      setLoading(false);
-      localStorage.setItem("token", res.data.results);
-      toast("User Registered!");
-    } catch (err) {
-      setLoading(false);
-      toast("Something went wrong!");
-    }
+    dispatch(setLoading());
+    await dispatch(register(formState));
+    dispatch(removeLoading());
     setFormState(initState);
   }
 
@@ -127,7 +120,7 @@ export default function LoginForm() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                {loading ? <Spinner /> : "Create Account"}
+                {isLoading ? <Spinner /> : "Create Account"}
               </button>
             </div>
           </form>

@@ -1,18 +1,12 @@
 import axios from "axios";
-
-const BASE_API = "http://localhost:8080";
+const BASE_API = "https://teal-scallop-cape.cyclic.app";
 
 const register = async (user) => {
-  return axios.post(`${BASE_API}/signup`, user);
+  return await axios.post(`${BASE_API}/register`, user);
 };
 
-const login = (user) => {
-  return axios.post(`${BASE_API}/signin`, user).then((res) => {
-    if (res.data.token) {
-      localStorage.setItem("token", res.data.token);
-    }
-    return res.data;
-  });
+const login = async (user) => {
+  return await axios.post(`${BASE_API}/login`, user);
 };
 
 const logout = () => {

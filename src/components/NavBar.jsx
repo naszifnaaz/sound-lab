@@ -1,16 +1,17 @@
 import { BiMenu, BiUser } from "react-icons/bi";
-import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 import sound_lab_black from "../assets/sound-lab-black.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import CartDrawer from "./CartDrawer";
 import { AvatarMenu } from "./AvatarMenu";
+import { useSelector } from "react-redux";
 
 export const NavBar = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [cartMenu, setCartMenu] = useState(false);
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const isLoggedIn = useSelector((store) => store.isLoggedIn);
   return (
     <>
       <div>
@@ -72,7 +73,6 @@ export const NavBar = () => {
               </Link>
             )}
 
-            {/* <AiOutlineSearch className="text-3xl mr-3 cursor-pointer" /> */}
             <BsBag
               className="text-3xl cursor-pointer"
               onClick={() => setCartMenu(true)}

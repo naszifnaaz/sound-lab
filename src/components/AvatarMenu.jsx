@@ -1,10 +1,17 @@
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Menu, Transition } from "@headlessui/react";
+import AuthService from "../services/auth.service";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/actions/auth";
 
 export const AvatarMenu = () => {
+  const dispatch = useDispatch();
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
+  }
+
+  function handleLogout() {
+    dispatch(logout());
   }
 
   return (
@@ -13,8 +20,8 @@ export const AvatarMenu = () => {
         <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span className="sr-only">Open user menu</span>
           <img
-            className="h-11 w-11 rounded-full"
-            src="https://tecdn.b-cdn.net/img/new/avatars/2.webp"
+            className="h-10 w-10 rounded-full"
+            src="https://i.pravatar.cc/300"
             alt=""
           />
           <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
@@ -64,6 +71,7 @@ export const AvatarMenu = () => {
                   active ? "bg-gray-100" : "",
                   "block px-4 py-2 text-sm text-gray-700"
                 )}
+                onClick={handleLogout}
               >
                 Logout
               </a>
