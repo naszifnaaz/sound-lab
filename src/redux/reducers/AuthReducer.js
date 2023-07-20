@@ -6,7 +6,7 @@ import {
   LOGOUT,
   SET_LOADING,
   REMOVE_LOADING,
-} from "./actions/types";
+} from "../actions/types";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,7 +17,7 @@ const initState = {
   currentUser: {},
 };
 
-export const Reducer = (store = initState, { type, payload }) => {
+export const AuthReducer = (store = initState, { type, payload }) => {
   switch (type) {
     case REGISTER_SUCCESS:
       localStorage.setItem("token", payload);
