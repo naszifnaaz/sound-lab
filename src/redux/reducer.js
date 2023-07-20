@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 const initState = {
   isLoading: false,
   isLoggedIn: false,
+  isAdmin: true,
   currentUser: {},
 };
 
