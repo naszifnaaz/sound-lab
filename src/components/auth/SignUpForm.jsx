@@ -19,7 +19,7 @@ export default function LoginForm() {
 
   const [formState, setFormState] = useState(initState);
   const dispatch = useDispatch();
-  const isLoading = useSelector((store) => store.isLoading);
+  const isLoading = useSelector((store) => store.auth.isLoading);
 
   async function handleSubmit(e) {
     e.preventDefault();

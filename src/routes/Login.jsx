@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const isLoggedIn = useSelector((store) => store.isLoggedIn);
+  const isLoggedIn = useSelector((store) => store.auth.isLoggedIn);
   const navigate = useNavigate();
   if (isLoggedIn) navigate("/");
   return (

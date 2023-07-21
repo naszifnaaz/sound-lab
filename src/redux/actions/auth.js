@@ -27,7 +27,7 @@ export const login = (user) => async (dispatch) => {
     const res = await AuthService.login(user);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data.token,
+      payload: res.data,
     });
   } catch (err) {
     dispatch({

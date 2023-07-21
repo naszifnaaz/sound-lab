@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 export const NavBar = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [cartMenu, setCartMenu] = useState(false);
-  const isLoggedIn = useSelector((store) => store.isLoggedIn);
+  const isLoggedIn = useSelector((store) => store.auth.isLoggedIn);
   return (
     <>
       <div>

@@ -2,6 +2,7 @@ import logo from "../../assets/sound-lab-white.svg";
 import { FiUsers, FiDatabase } from "react-icons/fi";
 import { AiOutlineCreditCard } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
+import { RxDashboard } from "react-icons/rx";
 import { TbDeviceAnalytics } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -59,6 +60,10 @@ export const Sidebar = () => {
 };
 
 const SidebarItems = [
+  {
+    title: "Dashboard",
+    icon: RxDashboard,
+  },
   {
     title: "Users",
     icon: FiUsers,

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export const AvatarMenu = () => {
   const dispatch = useDispatch();
-  const isAdmin = useSelector((store) => store.isAdmin);
+  const isAdmin = useSelector((store) => store.auth.isAdmin);
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -42,7 +42,7 @@ export const AvatarMenu = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to={"/admin"}
+                  to={"/admin/dashboard"}
                   className={classNames(
                     active ? "bg-gray-100" : "",
                     "block px-4 py-2 text-sm text-gray-700"

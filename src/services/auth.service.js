@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_API = "https://teal-scallop-cape.cyclic.app";
+const BASE_API = "http://localhost:8080";
 
 const register = async (user) => {
   return await axios.post(`${BASE_API}/register`, user);

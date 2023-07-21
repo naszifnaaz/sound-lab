@@ -7,35 +7,38 @@ import {
   SET_LOADING,
   REMOVE_LOADING,
 } from "../actions/types";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const initState = {
   isLoading: false,
   isLoggedIn: false,
-  isAdmin: true,
+  isAdmin: false,
   currentUser: {},
 };
 
 export const AuthReducer = (store = initState, { type, payload }) => {
   switch (type) {
     case REGISTER_SUCCESS:
-      localStorage.setItem("token", payload);
-      toast("User Registered!");
-      return { ...store, isLoggedIn: true };
+      localStorage.setItem("token", payload.token);
+      return {
+        ...store,
+        isLoggedIn: true,
+        currentUser: payload.email,
+        isAdmin: payload.role === "user" ? false : true,
+      };
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload);
-      toast("Login Successfull!");
-      return { ...store, isLoggedIn: true };
+      return {
+        ...store,
+        isLoggedIn: true,
+        currentUser: payload.email,
+        isAdmin: payload.role === "user" ? false : true,
+      };
     case REGISTER_FAIL:
-      toast("Email already registered!");
       return { ...store, isLoggedIn: false };
     case LOGIN_FAIL:
-      toast("Invalid Credentials!");
       return { ...store, isLoggedIn: false };
     case LOGOUT:
-      toast("User Logged Out!");
-      return { ...store, isLoggedIn: false, currentUser: {} };
+      return { ...store, isLoggedIn: false, currentUser: {}, isAdmin: false };
     case SET_LOADING:
       return { ...store, isLoading: true };
     case REMOVE_LOADING:

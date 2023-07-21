@@ -16,7 +16,7 @@ export default function LoginForm() {
   };
   const [formState, setFormState] = useState(initState);
   const dispatch = useDispatch();
-  const isLoading = useSelector((store) => store.isLoading);
+  const isLoading = useSelector((store) => store.auth.isLoading);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
