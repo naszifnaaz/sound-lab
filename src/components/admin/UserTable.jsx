@@ -1,4 +1,11 @@
+import { changeUserRole, deactivateUser } from "../../redux/actions/admin";
+import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const UserTable = ({ users }) => {
+  const dispatch = useDispatch();
+
   return (
     <div class="relative  shadow-md sm:rounded-lg ml-64 ">
       <table class="w-full text-sm text-left text-gray-500">
@@ -22,7 +29,6 @@ export const UserTable = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {/* Start */}
           {users.map((user, index) => {
             return (
               <tr
@@ -39,24 +45,39 @@ export const UserTable = ({ users }) => {
                 <td className="px-6 py-4">{user.email}</td>
                 <td className="px-6 py-4">{user.role}</td>
                 <td className="px-6 py-4">
-                  <button className="font-medium text-blue-600  hover:underline">
+                  <button
+                    className="font-medium text-blue-600  hover:underline"
+                    onClick={() =>
+                      dispatch(
+                        changeUserRole(
+                          user._id,
+                          user.role === "user" ? "admin" : "user"
+                        )
+                      )
+                    }
+                  >
                     {user.role === "user" ? "Admin Access" : "Revoke Access"}
                   </button>
                 </td>
                 <td class="px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600  hover:underline"
+                  <button
+                    className={`font-medium text-blue-600  hover:underline ${
+                      user.role === "admin"
+                        ? "text-slate-300"
+                        : "text- blue-600"
+                    }`}
+                    onClick={() => dispatch(deactivateUser(user._id))}
+                    disabled={user.role === "admin" ? true : false}
                   >
                     Deactivate
-                  </a>
+                  </button>
                 </td>
               </tr>
             );
           })}
-          {/* End */}
         </tbody>
       </table>
+      <ToastContainer />
     </div>
   );
 };

@@ -16,7 +16,7 @@ export const Users = () => {
       <Sidebar />
       <div className="ml-64 p-5 flex items-center justify-center bg-slate-100 ">
         <FiUsers size={36} />
-        <h1 className="font-bold text-3xl ml-3">USERS</h1>
+        <h1 className="font-bold text-3xl ml-3">USERS ({users.length})</h1>
       </div>
       <UserTable users={users} />
     </div>
