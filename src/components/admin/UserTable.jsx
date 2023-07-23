@@ -63,7 +63,7 @@ export const UserTable = ({ users }) => {
                   <button
                     className={`font-medium text-blue-600  hover:underline ${
                       user.role === "admin"
-                        ? "text-slate-300"
+                        ? "text-slate-300 cursor-not-allowed"
                         : "text- blue-600"
                     }`}
                     onClick={() => dispatch(deactivateUser(user._id))}
